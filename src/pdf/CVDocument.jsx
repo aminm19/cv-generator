@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const CVDocument = ({ cvData }) => {
   return (
     <Document>
-      <Page size="A4" style={styles.page}>
+      <Page size="LETTER" style={styles.page}>
         <View style={styles.container}>
           <PDFPersonalInfo data={cvData.personal} />
           <PDFSummary data={cvData.summary} />
