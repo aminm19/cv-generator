@@ -1,0 +1,163 @@
+.preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 500px;
+  width: 90vw;
+  max-height: 80vh;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.preview-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #f8f9fa;
+}
+
+.preview-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: #e9ecef;
+}
+
+.preview-modal-body {
+  padding: 24px;
+}
+
+.preview-info h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.preview-info p {
+  margin: 0 0 20px 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.cv-summary {
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.summary-item {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.summary-item strong {
+  color: #333;
+  margin-right: 8px;
+}
+
+.preview-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f8f9fa;
+}
+
+.preview-button,
+.download-button,
+.cancel-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.preview-button {
+  background-color: #3498db;
+  color: white;
+  flex: 1;
+}
+
+.preview-button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.download-button {
+  background-color: #27ae60;
+  color: white;
+  flex: 1;
+}
+
+.download-button:hover:not(:disabled) {
+  background-color: #229954;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  flex: 0.8;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+.preview-button:disabled,
+.download-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .preview-modal-footer {
+    flex-direction: column;
+  }
+  
+  .preview-button,
+  .download-button,
+  .cancel-button {
+    flex: none;
+  }
+}

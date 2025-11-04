@@ -3,41 +3,50 @@ import PersonalInfoSection from './PersonalInfoSection'
 import SummarySection from './SummarySection'
 import EducationSection from './EducationSection'
 import ExperienceSection from './ExperienceSection'
-import { useState, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
-function CVEditor({ onDataChange }) {
-  const [cvData, setCvData] = useState({
-    personal: { fullName: '', jobTitle: '', email: '', phone: '', address: '', city: '', state: '', zipCode: '' },
-    summary: '',
-    experience: [{ id: 1, company: '', position: '', location: '', startDate: '', endDate: '', current: false, description: '' }],
-    education: [{ id: 1, school: '', degree: '', field: '', startDate: '', endDate: '', gpa: '' }]
-  })
-
-  // Pass the setCvData function up to parent when component mounts
-  useEffect(() => {
-    if (onDataChange) {
-      onDataChange(setCvData)
+function CVEditor({ cvData, onDataChange }) {
+  // Initialize with default structure if cvData is empty
+  const currentData = useMemo(() => {
+    return cvData && Object.keys(cvData).length > 0 ? cvData : {
+      personal: { fullName: '', jobTitle: '', email: '', phone: '', address: '', city: '', state: '', zipCode: '' },
+      summary: '',
+      experience: [{ id: 1, company: '', position: '', location: '', startDate: '', endDate: '', current: false, description: '' }],
+      education: [{ id: 1, school: '', degree: '', field: '', startDate: '', endDate: '', gpa: '' }]
     }
-  }, [onDataChange])
+  }, [cvData])
+
+  // Update parent when default data is used
+  useEffect(() => {
+    if ((!cvData || Object.keys(cvData).length === 0) && onDataChange) {
+      onDataChange(currentData)
+    }
+  }, [cvData, onDataChange, currentData])
+
+  const handleDataUpdate = (section, newData) => {
+    if (onDataChange) {
+      onDataChange({...currentData, [section]: newData})
+    }
+  }
 
   return (
     <div className="cv-editor">
       <div className="cv-form">
         <PersonalInfoSection 
-          data={cvData.personal} 
-          onChange={(newData) => setCvData({...cvData, personal: newData})} 
+          data={currentData.personal} 
+          onChange={(newData) => handleDataUpdate('personal', newData)} 
         />
         <SummarySection 
-          data={cvData.summary} 
-          onChange={(newData) => setCvData({...cvData, summary: newData})} 
+          data={currentData.summary} 
+          onChange={(newData) => handleDataUpdate('summary', newData)} 
         />
         <ExperienceSection 
-          data={cvData.experience} 
-          onChange={(newData) => setCvData({...cvData, experience: newData})} 
+          data={currentData.experience} 
+          onChange={(newData) => handleDataUpdate('experience', newData)} 
         />
         <EducationSection 
-          data={cvData.education} 
-          onChange={(newData) => setCvData({...cvData, education: newData})} 
+          data={currentData.education} 
+          onChange={(newData) => handleDataUpdate('education', newData)} 
         />
       </div>
     </div>
