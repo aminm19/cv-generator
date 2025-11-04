@@ -1,5 +1,5 @@
 .input-field {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   width: 100%;
 }
 
@@ -14,33 +14,55 @@
 .input-text,
 .input-textarea {
   width: 100%;
-  padding: 4px 8px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  font-size: 12px;
+  padding: 1px 2px;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
   font-family: 'Times New Roman', serif;
-  color: #333;
+  color: #000;
   background-color: transparent;
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   outline: none;
   box-sizing: border-box;
+  line-height: 1.1;
+}
+
+/* Primary fields (job titles, school names) - Bold and prominent */
+.input-field.primary .input-text {
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+}
+
+/* Secondary fields (companies, dates) - Gray and smaller */
+.input-field.secondary .input-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Tertiary fields (descriptions, locations) - Smallest */
+.input-field.tertiary .input-text,
+.input-field.tertiary .input-textarea {
+  font-weight: 400;
+  font-size: 13px;
+  color: #555;
 }
 
 .input-text:focus,
 .input-textarea:focus {
-  border-color: #3498db;
-  background-color: rgba(52, 152, 219, 0.05);
+  background-color: transparent;
 }
 
 .input-text:hover,
 .input-textarea:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: transparent;
 }
 
 .input-textarea {
   resize: none;
-  height: 80px;
-  line-height: 1.5;
+  height: 50px;
+  line-height: 1.2;
   overflow-y: auto;
 }
 

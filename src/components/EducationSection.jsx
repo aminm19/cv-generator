@@ -64,39 +64,34 @@ function EducationSection() {
 
             <div className="input-row">
               <InputField
+                label="Degree"
+                value={education.degree}
+                onChange={(value) => updateEducation(education.id, 'degree', value)}
+                maxLength={50}
+                placeholder="Bachelor of Science in Computer Science"
+                className="primary"
+              />
+            </div>
+
+            <div className="input-row">
+              <InputField
                 label="School/University"
                 value={education.school}
                 onChange={(value) => updateEducation(education.id, 'school', value)}
                 maxLength={100}
                 placeholder="University of California"
                 required
+                className="secondary"
               />
             </div>
 
-            <div className="input-row">
-              <InputField
-                label="Degree"
-                value={education.degree}
-                onChange={(value) => updateEducation(education.id, 'degree', value)}
-                maxLength={50}
-                placeholder="Bachelor of Science"
-              />
-              
-              <InputField
-                label="Field of Study"
-                value={education.field}
-                onChange={(value) => updateEducation(education.id, 'field', value)}
-                maxLength={50}
-                placeholder="Computer Science"
-              />
-            </div>
-
-            <div className="input-row">
+            <div className="input-row date-row">
               <InputField
                 label="Start Date"
                 type="date"
                 value={education.startDate}
                 onChange={(value) => updateEducation(education.id, 'startDate', value)}
+                className="secondary"
               />
               
               <InputField
@@ -104,14 +99,18 @@ function EducationSection() {
                 type="date"
                 value={education.endDate}
                 onChange={(value) => updateEducation(education.id, 'endDate', value)}
+                className="secondary"
               />
-              
+            </div>
+
+            <div className="input-row">
               <InputField
                 label="GPA (Optional)"
                 value={education.gpa}
                 onChange={(value) => updateEducation(education.id, 'gpa', value)}
                 maxLength={10}
                 placeholder="3.8/4.0"
+                className="tertiary"
               />
             </div>
           </div>

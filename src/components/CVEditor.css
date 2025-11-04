@@ -1,10 +1,10 @@
 .cv-editor {
-  width: 600px;
-  height: 776px; /* Maintains 8.5:11 aspect ratio (600 * 11/8.5) */
+  width: 750px;
+  height: 970px; /* Maintains 8.5:11 aspect ratio (750 * 11/8.5) */
   max-width: 90vw; /* Responsive fallback for smaller screens */
   background-color: white;
   margin: 20px auto;
-  padding: 40px; /* Reduced from 0.75in to match scale */
+  padding: 50px; /* Increased proportionally */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   position: relative;

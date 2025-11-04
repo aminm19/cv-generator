@@ -7,17 +7,30 @@ function InputField({
   type = "text", 
   maxLength = 100, 
   placeholder = "", 
-  required = false 
+  required = false,
+  className = "",
+  showCharCount = false
 }) {
   
   const handleChange = (e) => {
+    let inputValue = e.target.value
+    
+    // For date inputs, ensure year is max 4 digits
+    if (type === "date" && inputValue) {
+      const dateParts = inputValue.split('-')
+      if (dateParts[0] && dateParts[0].length > 4) {
+        dateParts[0] = dateParts[0].substring(0, 4)
+        inputValue = dateParts.join('-')
+      }
+    }
+    
     if (onChange) {
-      onChange(e.target.value)
+      onChange(inputValue)
     }
   }
 
   return (
-    <div className="input-field">
+    <div className={`input-field ${className}`}>
       <label className="input-label">
         {label}
         {required && <span className="required">*</span>}
@@ -38,16 +51,18 @@ function InputField({
           type={type}
           value={value || ''}
           onChange={handleChange}
-          maxLength={maxLength}
+          maxLength={type === "date" ? undefined : maxLength}
           placeholder={placeholder}
         />
       )}
       
-      <div className="input-footer">
-        <small className="char-count">
-          {(value || '').length}/{maxLength}
-        </small>
-      </div>
+      {showCharCount && (
+        <div className="input-footer">
+          <small className="char-count">
+            {(value || '').length}/{maxLength}
+          </small>
+        </div>
+      )}
     </div>
   )
 }

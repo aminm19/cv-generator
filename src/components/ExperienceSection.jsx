@@ -76,21 +76,23 @@ function ExperienceSection() {
 
             <div className="input-row">
               <InputField
-                label="Company"
-                value={experience.company}
-                onChange={(value) => updateExperience(experience.id, 'company', value)}
-                maxLength={100}
-                placeholder="Apple Inc."
-                required
-              />
-              
-              <InputField
                 label="Position"
                 value={experience.position}
                 onChange={(value) => updateExperience(experience.id, 'position', value)}
                 maxLength={100}
-                placeholder="Software Engineer"
+                placeholder="Front-end Developer"
                 required
+                className="primary"
+              />
+              
+              <InputField
+                label="Company"
+                value={experience.company}
+                onChange={(value) => updateExperience(experience.id, 'company', value)}
+                maxLength={100}
+                placeholder="ABC Company"
+                required
+                className="secondary"
               />
             </div>
 
@@ -100,17 +102,19 @@ function ExperienceSection() {
                 value={experience.location}
                 onChange={(value) => updateExperience(experience.id, 'location', value)}
                 maxLength={100}
-                placeholder="Cupertino, CA"
+                placeholder="New York"
+                className="secondary"
               />
             </div>
 
-            <div className="input-row">
+            <div className="input-row date-row">
               <InputField
                 label="Start Date"
                 type="date"
                 value={experience.startDate}
                 onChange={(value) => updateExperience(experience.id, 'startDate', value)}
                 required
+                className="secondary"
               />
               
               {!experience.current && (
@@ -119,9 +123,12 @@ function ExperienceSection() {
                   type="date"
                   value={experience.endDate}
                   onChange={(value) => updateExperience(experience.id, 'endDate', value)}
+                  className="secondary"
                 />
               )}
-              
+            </div>
+
+            <div className="input-row">
               <div className="checkbox-field">
                 <label className="checkbox-label">
                   <input
@@ -141,7 +148,9 @@ function ExperienceSection() {
                 value={experience.description}
                 onChange={(value) => updateExperience(experience.id, 'description', value)}
                 maxLength={400}
-                placeholder="Describe your key responsibilities, achievements, and technologies used..."
+                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+                className="tertiary"
+                showCharCount={true}
               />
             </div>
           </div>

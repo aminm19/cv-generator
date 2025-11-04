@@ -1,21 +1,106 @@
-/* Shared section styles */
+/* Resume Header Styles */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  /* border-bottom: 2px solid #333; */
+}
+
+.name-section {
+  flex: 1;
+}
+
+.name-input {
+  display: block;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  font-family: 'Times New Roman', serif;
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-bottom: 4px;
+  padding: 2px 4px;
+}
+
+.name-input:focus {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.job-title-input {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 400;
+  color: #333;
+  font-family: 'Times New Roman', serif;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 2px 4px;
+}
+
+.job-title-input:focus {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.contact-info {
+  flex: 1;
+  text-align: right;
+  padding-left: 20px;
+}
+
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+
+.contact-input {
+  font-size: 13px;
+  font-family: 'Times New Roman', serif;
+  color: #333;
+  background: transparent;
+  border: none;
+  outline: none;
+  text-align: right;
+  padding: 2px 4px;
+  min-width: 120px;
+}
+
+.contact-input:focus {
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.contact-input::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* Shared section styles for other sections */
 .cv-section {
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   padding: 0;
   background-color: transparent;
   border: none;
 }
 
 .section-title {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-size: 16px;
   font-weight: 600;
-  color: #c0392b;
+  color: #d73527;
   font-family: 'Times New Roman', serif;
-  border-bottom: 1px solid #c0392b;
-  padding-bottom: 4px;
+  border-bottom: 1px solid #d73527;
+  padding-bottom: 3px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-align: left;
 }
 
 .section-content {
@@ -27,27 +112,54 @@
 
 .input-row {
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 0px;
+  margin-bottom: 1px;
   align-items: flex-start;
 }
 
 .input-row > * {
+  width: 100%;
+}
+
+/* Horizontal layout for date ranges */
+.input-row.date-row {
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.input-row.date-row > * {
   flex: 1;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
+  .resume-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .contact-info {
+    text-align: left;
+    padding-left: 0;
+  }
+  
+  .contact-row {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .name-input {
+    font-size: 24px;
+  }
+  
+  .job-title-input {
+    font-size: 16px;
+  }
+  
   .input-row {
     flex-direction: column;
     gap: 8px;
-  }
-  
-  .cv-section {
-    padding: 16px;
-  }
-  
-  .section-content {
-    padding: 16px;
   }
 }

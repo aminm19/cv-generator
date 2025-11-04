@@ -17,6 +17,7 @@ function SummarySection() {
           onChange={setSummary}
           maxLength={500}
           placeholder="Write a brief professional summary highlighting your key skills, experience, and career objectives..."
+          showCharCount={true}
         />
         
         <div className="summary-tips">

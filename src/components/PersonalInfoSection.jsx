@@ -5,6 +5,7 @@ import './PersonalInfoSection.css'
 function PersonalInfoSection() {
   const [personalInfo, setPersonalInfo] = useState({
     fullName: '',
+    jobTitle: '',
     email: '',
     phone: '',
     address: '',
@@ -21,79 +22,66 @@ function PersonalInfoSection() {
   }
 
   return (
-    <section className="cv-section">
-      <h2 className="section-title">Personal Information</h2>
+    <header className="resume-header">
+      <div className="name-section">
+        <input
+          className="name-input"
+          value={personalInfo.fullName}
+          onChange={(e) => updateField('fullName', e.target.value)}
+          placeholder="Name"
+          maxLength={50}
+        />
+        <input
+          className="job-title-input"
+          value={personalInfo.jobTitle}
+          onChange={(e) => updateField('jobTitle', e.target.value)}
+          placeholder="Your Professional Title"
+          maxLength={50}
+        />
+      </div>
       
-      <div className="section-content">
-        <div className="input-row">
-          <InputField
-            label="Full Name"
-            value={personalInfo.fullName}
-            onChange={(value) => updateField('fullName', value)}
-            maxLength={50}
-            placeholder="John Doe"
-            required
-          />
-        </div>
-
-        <div className="input-row">
-          <InputField
-            label="Email"
-            type="email"
-            value={personalInfo.email}
-            onChange={(value) => updateField('email', value)}
-            maxLength={100}
-            placeholder="john.doe@email.com"
-            required
-          />
-          
-          <InputField
-            label="Phone"
+      <div className="contact-info">
+        <div className="contact-row">
+          <input
+            className="contact-input"
             type="tel"
             value={personalInfo.phone}
-            onChange={(value) => updateField('phone', value)}
+            onChange={(e) => updateField('phone', e.target.value)}
+            placeholder="123-456-7890"
             maxLength={20}
-            placeholder="(555) 123-4567"
           />
-        </div>
-
-        <div className="input-row">
-          <InputField
-            label="Address"
-            value={personalInfo.address}
-            onChange={(value) => updateField('address', value)}
+          <input
+            className="contact-input"
+            type="email"
+            value={personalInfo.email}
+            onChange={(e) => updateField('email', e.target.value)}
+            placeholder="youremail@example.com"
             maxLength={100}
-            placeholder="123 Main Street"
           />
         </div>
-
-        <div className="input-row">
-          <InputField
-            label="City"
-            value={personalInfo.city}
-            onChange={(value) => updateField('city', value)}
-            maxLength={50}
-            placeholder="New York"
+        
+        <div className="contact-row">
+          <input
+            className="contact-input address-input"
+            value={personalInfo.address}
+            onChange={(e) => updateField('address', e.target.value)}
+            placeholder="linkedin.com/in/yourprofile"
+            maxLength={100}
           />
-          
-          <InputField
-            label="State"
-            value={personalInfo.state}
-            onChange={(value) => updateField('state', value)}
-            maxLength={20}
-            placeholder="NY"
-          />
-          
-          <InputField
-            label="ZIP Code"
-            value={personalInfo.zipCode}
-            onChange={(value) => updateField('zipCode', value)}
-            maxLength={10}
-            placeholder="10001"
+          <input
+            className="contact-input location-input"
+            value={`${personalInfo.city}${personalInfo.city && personalInfo.state ? ', ' : ''}${personalInfo.state}`}
+            onChange={(e) => {
+              const parts = e.target.value.split(', ')
+              updateField('city', parts[0] || '')
+              updateField('state', parts[1] || '')
+            }}
+            placeholder="Your Location"
+            maxLength={70}
           />
         </div>
       </div>
-    </section>
+    </header>
   )
 }
 
