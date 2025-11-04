@@ -1,56 +1,60 @@
-import { useState } from 'react'
 import InputField from './InputField'
 import './ExperienceSection.css'
 
-function ExperienceSection() {
-  const [experienceEntries, setExperienceEntries] = useState([
-    {
-      id: 1,
-      company: '',
-      position: '',
-      location: '',
-      startDate: '',
-      endDate: '',
-      current: false,
-      description: ''
-    }
-  ])
+function ExperienceSection({ data = [], onChange }) {
+  // Use data array or default to one empty entry
+  const experienceEntries = data.length > 0 ? data : [{
+    id: 1,
+    company: '',
+    position: '',
+    location: '',
+    startDate: '',
+    endDate: '',
+    current: false,
+    description: ''
+  }]
 
   const updateExperience = (id, field, value) => {
-    setExperienceEntries(prev => 
-      prev.map(entry => 
+    if (onChange) {
+      const updatedEntries = experienceEntries.map(entry => 
         entry.id === id ? { ...entry, [field]: value } : entry
       )
-    )
+      onChange(updatedEntries)
+    }
   }
 
   const toggleCurrent = (id) => {
-    setExperienceEntries(prev => 
-      prev.map(entry => 
+    if (onChange) {
+      const updatedEntries = experienceEntries.map(entry => 
         entry.id === id 
           ? { ...entry, current: !entry.current, endDate: !entry.current ? '' : entry.endDate }
           : entry
       )
-    )
+      onChange(updatedEntries)
+    }
   }
 
   const addExperience = () => {
-    const newId = Math.max(...experienceEntries.map(e => e.id)) + 1
-    setExperienceEntries(prev => [...prev, {
-      id: newId,
-      company: '',
-      position: '',
-      location: '',
-      startDate: '',
-      endDate: '',
-      current: false,
-      description: ''
-    }])
+    if (onChange) {
+      const newId = Math.max(...experienceEntries.map(e => e.id)) + 1
+      const newEntry = {
+        id: newId,
+        company: '',
+        position: '',
+        location: '',
+        startDate: '',
+        endDate: '',
+        current: false,
+        description: ''
+      }
+      onChange([...experienceEntries, newEntry])
+    }
   }
 
   const removeExperience = (id) => {
-    if (experienceEntries.length > 1) {
-      setExperienceEntries(prev => prev.filter(entry => entry.id !== id))
+    if (experienceEntries.length > 1 && onChange) {
+      const filteredEntries = experienceEntries.filter(entry => entry.id !== id)
+      onChange(filteredEntries)
     }
   }
 

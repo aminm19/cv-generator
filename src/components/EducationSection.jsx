@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import InputField from './InputField'
 import './EducationSection.css'
 
-function EducationSection() {
-  const [educationEntries, setEducationEntries] = useState([
-    {
+function EducationSection({ data = [], onChange }) {
+  const educationEntries = data.length > 0 ? data : [{
       id: 1,
       school: '',
       degree: '',
@@ -12,33 +10,37 @@ function EducationSection() {
       startDate: '',
       endDate: '',
       gpa: ''
+  }]
+
+    const updateEducation = (id, field, value) => {
+        if(onChange) {
+            const updatedEntries =  educationEntries.map(entry => 
+            entry.id === id ? { ...entry, [field]: value } : entry)
+
+            onChange(updatedEntries)
+        }
+    }   
+
+    const addEducation = () => {
+        if (onChange) {
+            const newId = Math.max(...educationEntries.map(e => e.id)) + 1
+            const newEntry = {
+                id: newId,
+                school: '',
+                degree: '',
+                field: '',
+                startDate: '',
+                endDate: '',
+                gpa: ''
+            }
+            onChange([...educationEntries, newEntry])
+        }
     }
-  ])
-
-  const updateEducation = (id, field, value) => {
-    setEducationEntries(prev => 
-      prev.map(entry => 
-        entry.id === id ? { ...entry, [field]: value } : entry
-      )
-    )
-  }
-
-  const addEducation = () => {
-    const newId = Math.max(...educationEntries.map(e => e.id)) + 1
-    setEducationEntries(prev => [...prev, {
-      id: newId,
-      school: '',
-      degree: '',
-      field: '',
-      startDate: '',
-      endDate: '',
-      gpa: ''
-    }])
-  }
 
   const removeEducation = (id) => {
-    if (educationEntries.length > 1) {
-      setEducationEntries(prev => prev.filter(entry => entry.id !== id))
+    if (educationEntries.length > 1 && onChange) {
+      const filteredEntries = educationEntries.filter(entry => entry.id !== id)
+      onChange(filteredEntries)
     }
   }
 
@@ -115,7 +117,7 @@ function EducationSection() {
             </div>
           </div>
         ))}
-        
+
         <button type="button" className="add-btn" onClick={addEducation}>
           + Add Education
         </button>

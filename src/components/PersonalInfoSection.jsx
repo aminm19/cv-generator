@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import InputField from './InputField'
 import './PersonalInfoSection.css'
 
-function PersonalInfoSection() {
-  const [personalInfo, setPersonalInfo] = useState({
+function PersonalInfoSection({ data = {}, onChange }) {
+  // Use props instead of local state
+  const personalInfo = {
     fullName: '',
     jobTitle: '',
     email: '',
@@ -11,14 +11,17 @@ function PersonalInfoSection() {
     address: '',
     city: '',
     state: '',
-    zipCode: ''
-  })
+    zipCode: '',
+    ...data // Override defaults with passed data
+  }
 
   const updateField = (field, value) => {
-    setPersonalInfo(prev => ({
-      ...prev,
-      [field]: value
-    }))
+    if (onChange) {
+      onChange({
+        ...personalInfo,
+        [field]: value
+      })
+    }
   }
 
   return (
@@ -56,7 +59,7 @@ function PersonalInfoSection() {
             value={personalInfo.email}
             onChange={(e) => updateField('email', e.target.value)}
             placeholder="youremail@example.com"
-            maxLength={100}
+            maxLength={50}
           />
         </div>
         
@@ -66,7 +69,7 @@ function PersonalInfoSection() {
             value={personalInfo.address}
             onChange={(e) => updateField('address', e.target.value)}
             placeholder="linkedin.com/in/yourprofile"
-            maxLength={100}
+            maxLength={50}
           />
           <input
             className="contact-input location-input"
@@ -77,7 +80,7 @@ function PersonalInfoSection() {
               updateField('state', parts[1] || '')
             }}
             placeholder="Your Location"
-            maxLength={70}
+            maxLength={50}
           />
         </div>
       </div>
