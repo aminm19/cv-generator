@@ -1,0 +1,73 @@
+.input-field {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.input-label {
+  display: none; /* Hide labels for more resume-like appearance */
+}
+
+.required {
+  display: none;
+}
+
+.input-text,
+.input-textarea {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 12px;
+  font-family: 'Times New Roman', serif;
+  color: #333;
+  background-color: transparent;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-text:focus,
+.input-textarea:focus {
+  border-color: #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.input-text:hover,
+.input-textarea:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.input-textarea {
+  resize: none;
+  height: 80px;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+.input-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+
+.char-count {
+  font-size: 9px;
+  color: #bbb;
+  font-family: monospace;
+}
+
+/* Style when approaching character limit */
+.input-field .char-count {
+  color: #7f8c8d;
+}
+
+.input-text[value]:not([value=""]) + .input-footer .char-count,
+.input-textarea:not(:placeholder-shown) + .input-footer .char-count {
+  color: #2c3e50;
+}
+
+/* Warning when getting close to limit */
+.input-text:invalid + .input-footer .char-count,
+.input-textarea:invalid + .input-footer .char-count {
+  color: #e67e22;
+}
