@@ -1,6 +1,6 @@
 TOP #20: CV Generator
 
-First React project
+First React project: Interactive resume builder with option for pdf download
 
 Utilize components, props, useMemo, useState, and react-pdf renderer
 
