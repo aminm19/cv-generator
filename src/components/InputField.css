@@ -43,6 +43,19 @@
   line-height: 1.1;
 }
 
+/* Text selection highlighting for better visibility */
+.input-text::selection,
+.input-textarea::selection {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.input-text::-moz-selection,
+.input-textarea::-moz-selection {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
 /* Primary fields (job titles, school names) - Bold and prominent */
 .input-field.primary .input-text {
   font-weight: 600;
