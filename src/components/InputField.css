@@ -7,6 +7,22 @@
   display: none; /* Hide labels for more resume-like appearance */
 }
 
+.input-field.show-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-field.show-label .input-label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+  min-width: 70px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
 .required {
   display: none;
 }
@@ -17,7 +33,7 @@
   padding: 1px 2px;
   border: none;
   border-radius: 0;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Times New Roman', serif;
   color: #000;
   background-color: transparent;
@@ -30,23 +46,23 @@
 /* Primary fields (job titles, school names) - Bold and prominent */
 .input-field.primary .input-text {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   color: #000;
 }
 
-/* Secondary fields (companies, dates) - Gray and smaller */
+/* Secondary fields (companies, dates) - Gray but readable */
 .input-field.secondary .input-text {
   font-weight: 400;
-  font-size: 14px;
-  color: #666;
+  font-size: 16px;
+  color: #444;
 }
 
-/* Tertiary fields (descriptions, locations) - Smallest */
+/* Tertiary fields (descriptions, locations) - Readable size */
 .input-field.tertiary .input-text,
 .input-field.tertiary .input-textarea {
   font-weight: 400;
-  font-size: 13px;
-  color: #555;
+  font-size: 15px;
+  color: #333;
 }
 
 .input-text:focus,

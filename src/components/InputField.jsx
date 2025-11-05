@@ -30,7 +30,7 @@ function InputField({
   }
 
   return (
-    <div className={`input-field ${className}`}>
+    <div className={`input-field ${className} ${type === 'date' ? 'show-label' : ''}`}>
       <label className="input-label">
         {label}
         {required && <span className="required">*</span>}
