@@ -44,7 +44,7 @@ const PDFPersonalInfo = ({ data }) => {
       <View style={styles.header}>
         <View style={styles.nameSection}>
           <Text style={styles.name}>{data.fullName || 'Your Name'}</Text>
-          <Text style={styles.jobTitle}>{data.jobTitle || 'Your Job Title'}</Text>
+          <Text style={styles.jobTitle}>{data.jobTitle}</Text>
         </View>
         
         <View style={styles.contactInfo}>

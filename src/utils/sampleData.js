@@ -48,8 +48,6 @@ export const generateSampleCV = () => {
   }
 }
 
-// You can add more sample CV variations here if needed
 export const generateRandomCV = () => {
-  // Could return different sample data sets
   return generateSampleCV()
 }
