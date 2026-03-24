@@ -1,0 +1,26 @@
+.footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+  font-size: 14px;
+  color: #666;
+}
+
+.footer p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.github-link {
+  color: #0d99ff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.3rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.github-link:hover {
+  color: #0a7acc;
+  text-decoration: underline;
+}

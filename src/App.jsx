@@ -3,6 +3,7 @@ import './App.css';
 import Button from './components/Button';
 import CVEditor from './components/CVEditor';
 import PreviewModal from './components/PreviewModal';
+import Footer from './components/Footer';
 import { generateSampleCV } from './utils/sampleData';
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
         onClose={() => setIsPreviewModalOpen(false)}
         cvData={cvData}
       />
+
+      <Footer />
     </div>
   );
 }
