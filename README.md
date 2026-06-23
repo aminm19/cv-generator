@@ -1,4 +1,4 @@
-TOP #20: CV Generator
+CV Generator
 
 First React project: Interactive resume builder with option for pdf download
 
